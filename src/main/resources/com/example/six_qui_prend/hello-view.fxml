@@ -2,15 +2,37 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.six_qui_prend.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.six_qui_prend.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+    <!-- Place the background image (6_qui_prend_!.jpeg) as an ImageView -->
+    <ImageView fx:id="backgroundImage" style="max-width: 100%; max-height: 100%; width: auto; height: auto;">
+        <Image url="/6_qui_prend_!.jpeg"/>
+    </ImageView>
+
+    <!-- Place the VBox on top of the background image -->
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label fx:id="startingText"/>
+        <Button text="Start" onAction="#onStartButtonClick" style="-fx-text-fill: #ffffff;
+            -fx-font-family: 'Papyrus';
+            -fx-font-size: 4em;
+            -fx-background-color: rgba(0, 0, 0, 0.5);
+            -fx-background-radius: 40px;
+            -fx-border-color: #000000;
+            -fx-border-width: 3px;
+            -fx-border-radius: 40px;" >
+            <padding>
+                <Insets right="50" left="50" />
+            </padding>
+        </Button>
+    </VBox>
+</StackPane>
