@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -25,7 +26,7 @@ public class HelloApplication extends Application {
         stage.setWidth(screenBounds.getWidth());
         stage.setHeight(screenBounds.getHeight());
 
-        stage.setTitle("6 qui prend");
+        stage.setTitle("6 qui prend !");
         stage.setScene(startingScene);
         stage.show();
 
@@ -36,6 +37,9 @@ public class HelloApplication extends Application {
         backgroundMedia.setVolume(0.5);  // 50% volume
         backgroundMedia.setCycleCount(MediaPlayer.INDEFINITE);  // Repeat indefinitely
         backgroundMedia.setAutoPlay(true);  // Autoplay when program starts
+
+        // Add the MediaPlayer to the Scene
+        startingScene.setUserData(backgroundMedia);
     }
 
     public static void main(String[] args) {

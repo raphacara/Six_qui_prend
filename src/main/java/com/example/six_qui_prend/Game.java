@@ -3,7 +3,6 @@ package com.example.six_qui_prend;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Game {
     private List<Player> players;
     private Deck deck;

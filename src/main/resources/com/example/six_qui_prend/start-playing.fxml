@@ -5,13 +5,25 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.six_qui_prend.StartPlayingController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.six_qui_prend.GameController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Welcome to Start Playing Page!" />
-        <Button text="Go Back" onAction="#onGoBackButtonClick" />
+    <ImageView fx:id="backgroundImage2">
+        <Image url="@../../../background6.png"/>
+    </ImageView>
+
+    <VBox alignment="TOP_LEFT" spacing="20.0">
+        <Button text="Go Back" onAction="#onGoBackButtonClick" style="-fx-text-fill: #ffffff;
+                -fx-font-family: 'Papyrus';
+                -fx-font-size: 2em;
+                 -fx-background-color: rgba(0, 0, 0, 0.7);
+                -fx-background-radius: 10px;
+                -fx-border-color: #000000;
+                -fx-border-width: 3px;
+                -fx-border-radius: 10px;"/>
     </VBox>
 </StackPane>

@@ -1,60 +1,53 @@
 package com.example.six_qui_prend;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HelloController {
-
-    @FXML
-    public Label startingText;
-
-    @FXML
-    public StackPane stackPaneRoot;
+public class HelloController implements Initializable {
 
     @FXML
     private ImageView backgroundImage;
 
-    public void initialize() {
-        if (stackPaneRoot != null && stackPaneRoot.getScene() != null) {
-            Stage stage = (Stage) stackPaneRoot.getScene().getWindow();
-            backgroundImage.fitWidthProperty().bind(stage.widthProperty());
-            backgroundImage.fitHeightProperty().bind(stage.heightProperty());
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        backgroundImage.setPreserveRatio(true); // Définit preserveRatio sur true
+        Scene scene = backgroundImage.getScene();
+        if (scene != null) {
+            backgroundImage.fitWidthProperty().bind(scene.widthProperty());
+            backgroundImage.fitHeightProperty().bind(scene.heightProperty());
+        } else {
+            backgroundImage.sceneProperty().addListener((observable, oldScene, newScene) -> {
+                backgroundImage.fitWidthProperty().bind(newScene.widthProperty());
+                backgroundImage.fitHeightProperty().bind(newScene.heightProperty());
+            });
         }
     }
 
     @FXML
-    private Button playButton;
+    protected void onStartButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start-playing.fxml"));
+        StackPane root = fxmlLoader.load();
+        Stage stage = (Stage) backgroundImage.getScene().getWindow();
+        boolean wasFullScreen = stage.isFullScreen(); // Save the current state of the full screen mode
+        Scene introScene = new Scene(root);
 
-    @FXML
-    private void onStartButtonClick(ActionEvent event) {
-        try {
-            // Charger le fichier FXML de la nouvelle page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("start-playing.fxml"));
-            Parent root = loader.load();
+        // Initialize the scene before accessing its properties
+        stage.setScene(introScene);
+        stage.setTitle("6 qui prend!");
+        stage.setFullScreen(wasFullScreen); // Restore the full screen mode
+        stage.show();
 
-            // Obtenir la scène actuelle à partir du bouton "Play"
-            Scene currentScene = playButton.getScene();
-
-            // Obtenir la fenêtre principale à partir de la scène actuelle
-            Stage primaryStage = (Stage) currentScene.getWindow();
-
-            // Modifier la scène pour afficher la nouvelle page
-            primaryStage.setScene(new Scene(root));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
+        // Pass the text to the next scene
+        GameController introController = fxmlLoader.getController();
     }
 }
-

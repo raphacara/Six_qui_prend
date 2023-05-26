@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
 
-<StackPane fx:id="stackPaneRoot" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.six_qui_prend.HelloController">
-
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.six_qui_prend.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <children>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <children>
-                <ImageView fitHeight="${stackPaneRoot.height}" fitWidth="${stackPaneRoot.width}">
-                    <image>
-                        <Image url="@../../../page_accueil.png" />
-                    </image>
-                </ImageView>
-                <Button onMouseClicked="#onStartButtonClick" prefHeight="322.0" prefWidth="891.0" style="-fx-text-fill: #ffffff; -fx-font-family: 'Papyrus'; -fx-font-size: 4em; -fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 40px; -fx-border-color: #000000; -fx-border-width: 3px; -fx-border-radius: 400px;" text="Start">
-                    <padding>
-                        <Insets left="50" right="50" />
-                    </padding>
-                </Button>
-            </children>
-        </AnchorPane>
-    </children>
+
+    <ImageView fx:id="backgroundImage">
+        <Image url="@../../../page_accueil.png"/>
+    </ImageView>
+
+    <VBox alignment="CENTER" spacing="20.0" style="-fx-translate-y: 12em;">
+        <Button text="Start" onAction="#onStartButtonClick" style="-fx-text-fill: #ffffff;
+                -fx-font-family: 'Papyrus';
+                -fx-font-size: 4em;
+                -fx-background-color: rgba(0, 0, 0, 1);
+                -fx-background-radius: 40px;
+                -fx-border-color: #000000;
+                -fx-border-width: 3px;
+                -fx-border-radius: 40px;"
+                prefWidth="200">
+            <padding>
+                <Insets right="50" left="50" />
+            </padding>
+        </Button>
+    </VBox>
 </StackPane>
