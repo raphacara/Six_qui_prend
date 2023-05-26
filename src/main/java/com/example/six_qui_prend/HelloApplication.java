@@ -25,7 +25,7 @@ public class HelloApplication extends Application {
         stage.setWidth(screenBounds.getWidth());
         stage.setHeight(screenBounds.getHeight());
 
-        stage.setTitle("Harry Potter at Home");
+        stage.setTitle("6 qui prend");
         stage.setScene(startingScene);
         stage.show();
 
