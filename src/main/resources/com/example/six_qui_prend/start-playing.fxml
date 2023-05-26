@@ -16,6 +16,7 @@
         <Image url="@../../../background6.png"/>
     </ImageView>
 
+
     <VBox alignment="TOP_LEFT" spacing="20.0">
         <Button text="Go Back" onAction="#onGoBackButtonClick" style="-fx-text-fill: #ffffff;
                 -fx-font-family: 'Papyrus';
