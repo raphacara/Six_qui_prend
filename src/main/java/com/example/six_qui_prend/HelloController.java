@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -46,8 +45,5 @@ public class HelloController implements Initializable {
         stage.setTitle("6 qui prend!");
         stage.setFullScreen(wasFullScreen); // Restore the full screen mode
         stage.show();
-
-        // Pass the text to the next scene
-        GameController introController = fxmlLoader.getController();
     }
 }
