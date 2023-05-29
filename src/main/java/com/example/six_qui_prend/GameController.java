@@ -1,12 +1,9 @@
 package com.example.six_qui_prend;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -18,12 +15,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
+    public HBox theGrid;
     @FXML
     private ImageView backgroundImage2;
     @FXML
     private GridPane gridView;
-    @FXML
-    private BorderPane gameRootPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,17 +37,16 @@ public class GameController implements Initializable {
             });
         }
 
-        createGridView();
+        createGridView(); //create the grid
+
         StackPane gridContainer = new StackPane(gridView);
         gridContainer.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         gridContainer.setAlignment(Pos.CENTER);
 
-        // Ajouter gridContainer au centre du BorderPane
-        //gameRootPane.setCenter(gridContainer);
+        addGridToTheGrid(); //add the grid to the fxml grid
     }
 
     private void createGridView() {
-        int num = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 6; col++) {
                 Button button = new Button();
@@ -66,13 +61,17 @@ public class GameController implements Initializable {
                 button.prefHeightProperty().bind(backgroundImage2.fitHeightProperty().divide(4));
 
                 gridView.add(button, col, row);
-                num++;
             }
         }
     }
 
+    private void addGridToTheGrid() {
+        theGrid.getChildren().add(gridView);
+    }
+
+
     @FXML
-    private void onRestartButtonClick(ActionEvent event) throws IOException {
+    private void onRestartButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start-playing.fxml"));
         StackPane root = fxmlLoader.load();
         Stage stage = (Stage) backgroundImage2.getScene().getWindow();
