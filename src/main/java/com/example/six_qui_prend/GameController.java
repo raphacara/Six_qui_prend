@@ -1,49 +1,61 @@
 package com.example.six_qui_prend;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
-import java.io.IOException;
+import com.example.six_qui_prend.Deck;
+import com.example.six_qui_prend.Card;
+
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
-    public HBox theGrid;
     @FXML
     private ImageView backgroundImage2;
     @FXML
     private GridPane gridView;
+    @FXML
+    private VBox playerHand;
+
+    @FXML
+    protected void onRestartButtonClick() {
+        // Code pour gérer l'action du bouton Restart
+    }
+
+
+    private Deck deck;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backgroundImage2.setPreserveRatio(true);
-        Scene scene = backgroundImage2.getScene();
 
+        createGridView(); // create the grid
+        addGridToTheGrid(); // add the grid to the fxml grid
 
-        if (scene != null) {
-            backgroundImage2.fitWidthProperty().bind(scene.widthProperty());
-            backgroundImage2.fitHeightProperty().bind(scene.heightProperty());
-        } else {
-            backgroundImage2.sceneProperty().addListener((observable, oldScene, newScene) -> {
-                backgroundImage2.fitWidthProperty().bind(newScene.widthProperty());
-                backgroundImage2.fitHeightProperty().bind(newScene.heightProperty());
-            });
+        deck = new Deck();
+        deck.initialize();
+
+        displayCards(); // display the cards in the grid
+        displayPlayerHand(); // display the player's hand
+    }
+
+    private void displayPlayerHand() {
+        List<Card> playerCards = deck.drawCards(10);
+
+        for (Card card : playerCards) {
+            Button cardButton = new Button();
+            cardButton.setStyle("-fx-background-image: url('" + card.getImagePath() + "'); " +
+                    "-fx-background-size: cover;");
+            cardButton.setOnAction(event -> handleCardClick(card));
+
+            playerHand.getChildren().add(cardButton);
         }
-
-        createGridView(); //create the grid
-
-        StackPane gridContainer = new StackPane(gridView);
-        gridContainer.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        gridContainer.setAlignment(Pos.CENTER);
-
-        addGridToTheGrid(); //add the grid to the fxml grid
     }
 
     private void createGridView() {
@@ -56,32 +68,31 @@ public class GameController implements Initializable {
                         " -fx-border-width: 1px;" +
                         " -fx-border-radius: 5%;");
 
-                // Lier la largeur et la hauteur du bouton à la taille de l'image
-                button.prefWidthProperty().bind(backgroundImage2.fitWidthProperty().divide(6));
-                button.prefHeightProperty().bind(backgroundImage2.fitHeightProperty().divide(4));
-
                 gridView.add(button, col, row);
             }
         }
     }
 
     private void addGridToTheGrid() {
-        theGrid.getChildren().add(gridView);
+        StackPane gridContainer = new StackPane(gridView);
+        gridContainer.setMaxSize(StackPane.USE_PREF_SIZE, StackPane.USE_PREF_SIZE);
+
+        playerHand.getChildren().add(gridContainer);
     }
 
+    private void displayCards() {
+        List<Card> cards = deck.drawCards(4);
 
-    @FXML
-    private void onRestartButtonClick() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start-playing.fxml"));
-        StackPane root = fxmlLoader.load();
-        Stage stage = (Stage) backgroundImage2.getScene().getWindow();
-        boolean wasFullScreen = stage.isFullScreen(); // Save the current state of the full screen mode
-        Scene introScene = new Scene(root);
+        for (int row = 0; row < 4; row++) {
+            Card card = cards.get(row);
+            Button button = (Button) gridView.getChildren().get(row);
+            button.setStyle("-fx-background-image: url('" + card.getImagePath() + "'); " +
+                    "-fx-background-size: cover;");
+            button.setOnAction(event -> handleCardClick(card));
+        }
+    }
 
-        // Initialize the scene before accessing its properties
-        stage.setScene(introScene);
-        stage.setTitle("6 qui prend!");
-        stage.setFullScreen(wasFullScreen); // Restore the full screen mode
-        stage.show();
+    private void handleCardClick(Card card) {
+        // Handle button click action
     }
 }

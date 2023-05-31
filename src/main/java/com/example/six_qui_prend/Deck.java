@@ -26,6 +26,7 @@ public class Deck {
 
     public List<Card> popCards(Integer numberToGet){
         List<Card> cardToGive = null;
+        cardToGive = new ArrayList<>();
         for (Integer i = 0; i < numberToGet; i++){
             cardToGive.add(cards.remove(0));
         }
