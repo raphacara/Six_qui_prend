@@ -1,7 +1,5 @@
 package com.example.six_qui_prend;
 
-import com.example.six_qui_prend.Card;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +22,14 @@ public class Deck {
 
         // Mélanger les cartes
         shuffle();
+    }
+
+    public List<Card> popCards(Integer numberToGet){
+        List<Card> cardToGive = null;
+        for (Integer i = 0; i < numberToGet; i++){
+            cardToGive.add(cards.remove(0));
+        }
+        return cardToGive;
     }
 
     public void shuffle() {

@@ -44,6 +44,10 @@ public class Player {
         // Retourne la carte choisie
     }
 
+    public void addNewCard(List<Card> cardsToAdd){
+        hand.addAll(cardsToAdd);
+    }
+
     public void playCard(Card card) {
         removeFromHand(card);
         // Logique pour jouer la carte, par exemple, mettre à jour l'état du jeu en fonction de la carte jouée par le joueur
@@ -53,7 +57,7 @@ public class Player {
         return penaltyPoints;
     }
 
-    public void addPenaltyPoints(int points) {
+    public void addPenaltyPoints(Integer points) {
         penaltyPoints += points;
     }
 }

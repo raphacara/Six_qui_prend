@@ -6,6 +6,7 @@ import java.util.List;
 public class Game {
     private List<Player> players;
     private Deck deck;
+    private GameBoard board;
 
     public Game(List<String> playerNames) {
         players = new ArrayList<>();
@@ -13,6 +14,14 @@ public class Game {
             players.add(new Player(name));
         }
         deck = new Deck();
+
+        // Giving 10 cards to all the players
+        for (Player player : players){
+            player.addNewCard(deck.popCards(10));
+        }
+        board = new GameBoard(deck.popCards(4));
+
+
     }
 
     public void startGame() {
@@ -43,6 +52,7 @@ public class Game {
             System.out.println(player.getName() + " played " + chosenCard);
         }
         System.out.println("-----");
+
     }
 
     private boolean checkGameEnd() {

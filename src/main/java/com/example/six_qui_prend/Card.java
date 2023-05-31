@@ -9,6 +9,14 @@ public class Card {
         this.number = number;
         this.bullHeads = bullHeads;
         this.imagePath = imagePath;
+    }{
+        this.number = number;
+        this.bullHeads = bullHeads;
+        this.imagePath = imagePath;
+    }
+
+    public Integer getValue() {
+        return number;
     }
 
     // Ajoutez les getters et les setters si nécessaire
