@@ -94,5 +94,6 @@ public class GameController implements Initializable {
 
     private void handleCardClick(Card card) {
         // Handle button click action
+
     }
 }
