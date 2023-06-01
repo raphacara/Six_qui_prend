@@ -21,11 +21,16 @@
                         <Image url="@../../../page_accueil.png" />
                     </image>
                 </ImageView>
-                <Button onMouseClicked="#onStartButtonClick" prefHeight="322.0" prefWidth="891.0" style="-fx-text-fill: #ffffff; -fx-font-family: 'Papyrus'; -fx-font-size: 4em; -fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 40px; -fx-border-color: #000000; -fx-border-width: 3px; -fx-border-radius: 400px;" text="Start">
-                    <padding>
-                        <Insets left="50" right="50" />
-                    </padding>
-                </Button>
+                <VBox alignment="CENTER" AnchorPane.bottomAnchor="140" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+                    <Button text="Start" onMouseClicked="#onStartButtonClick" style="-fx-text-fill: #ffffff;
+                    -fx-font-family: 'Papyrus';
+                    -fx-font-size: 4em;
+                    -fx-background-color: black;
+                    -fx-background-radius: 40px;
+                    -fx-border-color: #000000;
+                    -fx-border-width: 3px;
+                    -fx-border-radius: 400px;"/>
+                </VBox>
                 <VBox fx:id="playerHand" alignment="CENTER" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
                     <!-- Les cartes de la main du joueur seront ajoutées dynamiquement ici -->
                 </VBox>

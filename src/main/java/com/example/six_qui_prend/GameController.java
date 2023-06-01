@@ -63,8 +63,8 @@ public class GameController implements Initializable {
             for (int col = 0; col < 6; col++) {
                 Button button = new Button();
                 button.setStyle("-fx-font-size: 2em;" +
-                        " -fx-background-color: transparent;" +
-                        " -fx-border-color: black;" +
+                        " -fx-background-color: white;" +
+                        " -fx-border-color: transparent;" +
                         " -fx-border-width: 1px;" +
                         " -fx-border-radius: 5%;");
 

@@ -12,23 +12,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.six_qui_prend.GameController">
-    <ImageView>
+    <ImageView fx:id="backgroundImage2">
         <Image url="@../../../wood.jpeg"/>
-    </ImageView>
-    <ImageView fx:id="backgroundImage2" preserveRatio="true" fitWidth="800">
-        <Image url="@../../../background6.png"/>
     </ImageView>
 
     <BorderPane>
         <center>
             <GridPane>
                 <columnConstraints>
-                    <ColumnConstraints percentWidth="30" />
-                    <ColumnConstraints percentWidth="40" />
-                    <ColumnConstraints percentWidth="30" />
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="50" />
+                    <ColumnConstraints percentWidth="25" />
                 </columnConstraints>
 
-                <VBox GridPane.columnIndex="0" alignment="CENTER" spacing="20.0" style="-fx-padding: 20; -fx-font-family: 'Papyrus'; -fx-font-size: 2em;">
+                <VBox GridPane.columnIndex="0" alignment="TOP_CENTER" spacing="20.0" style="-fx-padding: 20; -fx-font-family: 'Papyrus'; -fx-font-size: 2em;">
                     <Button text="Restart" onAction="#onRestartButtonClick" style="-fx-text-fill: #ffffff; -fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 10px; -fx-border-color: #000000; -fx-border-width: 3px; -fx-border-radius: 10px;" />
                     <VBox alignment="CENTER_LEFT" style="-fx-padding: 40;">
                         <Text text="You: 50 points left"/>
@@ -61,7 +58,7 @@
                     </HBox>
                 </VBox>
 
-                <VBox GridPane.columnIndex="2" alignment="CENTER" spacing="20.0" style="-fx-padding: 20; -fx-font-family: 'Papyrus'; -fx-font-size: 2em;">
+                <VBox GridPane.columnIndex="2" alignment="TOP_CENTER" spacing="20.0" style="-fx-padding: 20; -fx-font-family: 'Papyrus'; -fx-font-size: 2em;">
                     <Text text="Your Hand :" />
                 </VBox>
             </GridPane>
