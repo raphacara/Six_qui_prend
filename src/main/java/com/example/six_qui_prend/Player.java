@@ -1,8 +1,8 @@
 package com.example.six_qui_prend;
 
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Player {
     private String name;
@@ -59,5 +59,14 @@ public class Player {
 
     public void addPenaltyPoints(Integer points) {
         penaltyPoints += points;
+    }
+
+    public Card playRandomCard() {
+        if (!hand.isEmpty()) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(hand.size());
+            return hand.remove(randomIndex);
+        }
+        return null;
     }
 }
