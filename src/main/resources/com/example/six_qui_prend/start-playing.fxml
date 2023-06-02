@@ -51,10 +51,9 @@
                                     <RowConstraints percentHeight="20" />
                                 </rowConstraints>
                             </GridPane>
-                        </VBox>
-                        <VBox fx:id="playerHand" alignment="CENTER" spacing="10">
-                            <!-- Les cartes de la main du joueur seront ajoutées dynamiquement ici -->
-                        </VBox>
+                            </VBox>
+                            <VBox fx:id="playerHand" alignment="CENTER" spacing="10">
+                            </VBox>
                     </HBox>
                 </VBox>
 

@@ -48,19 +48,23 @@ public class GameController implements Initializable {
     private void displayPlayerHand() {
         List<Card> playerCards = deck.drawCards(10);
 
-        for (Card card : playerCards) {
+        for (int i = 0; i < playerCards.size(); i++) {
+            Card card = playerCards.get(i);
             Button cardButton = new Button();
             cardButton.setStyle("-fx-background-image: url('" + card.getImagePath() + "'); " +
-                    "-fx-background-size: cover;");
+                    "-fx-background-size: cover; " +
+                    "-fx-display: inline-block;"); // Afficher en ligne
             cardButton.setOnAction(event -> handleCardClick(card));
 
             playerHand.getChildren().add(cardButton);
         }
     }
 
+
+
     private void createGridView() {
-        for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 6; col++) {
+        for (int col = 0; col < 6; col++) {
+            for (int row = 0; row < 4; row++) {
                 Button button = new Button();
                 button.setStyle("-fx-font-size: 2em;" +
                         " -fx-background-color: white;" +
